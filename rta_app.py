@@ -220,7 +220,7 @@ if uploaded_file:
 footer_html = """
 <div style="text-align: center; margin-top: 30px; font-size: 14px; color: white;">
 <hr style="border-top:1px solid #bbb;">
-<p><strong>Created By:</strong> K SAI PRAGNA &nbsp; | &nbsp; <strong>Batch:</strong> 12-11-2024 10AM HYD</p>
+<p><strong>Created By:</strong> K SAI PRAGNA &nbsp;</p>
 <p><strong>Project:</strong> Road Traffic Accident Analysis & ML Pipeline</p>
 <p>© 2025 All rights reserved</p>
 </div>
