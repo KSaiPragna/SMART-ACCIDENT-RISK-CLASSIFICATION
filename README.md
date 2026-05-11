@@ -1,28 +1,21 @@
-# 🚦 Smart Road Traffic Accident Severity Prediction System
+# 🚦 Smart Accident Risk Classification Using Traffic and Road Condition Data
 
 ## 📌 Project Overview
 
-This project focuses on analyzing and predicting road traffic accident severity using Machine Learning techniques and an interactive Streamlit dashboard.
+This project focuses on predicting road traffic accident occurrence using Machine Learning techniques, Exploratory Data Analysis (EDA), SQL integration, and an interactive Streamlit dashboard.
 
-The system performs:
+The system analyzes multiple traffic-related, environmental, driver-related, and road-condition factors to classify whether an accident is likely to occur.
 
-- Exploratory Data Analysis (EDA)
+The project includes:
+
 - Data Cleaning & Preprocessing
-- Accident Severity Prediction
-- Risk Classification
+- Exploratory Data Analysis (EDA)
+- Machine Learning Model Training
+- Accident Risk Prediction
 - Feature Importance Analysis
-- Model Comparison
 - SQL Database Integration
-- Interactive Visualization Dashboard
-
-The project helps:
-- Traffic Management Authorities
-- Smart City Planning Teams
-- Hospitals & Emergency Services
-- Insurance Companies
-- Public Safety Departments
-
-to identify accident-prone conditions and improve road safety strategies.
+- Interactive Streamlit Dashboard
+- Model Comparison & Evaluation
 
 ---
 
@@ -31,16 +24,17 @@ to identify accident-prone conditions and improve road safety strategies.
 The original dataset used in this project belongs to the client and cannot be uploaded publicly due to privacy and confidentiality restrictions.
 
 Therefore:
-- Only the source code, ML pipeline, and Streamlit dashboard are shared in this repository.
-- The dataset is intentionally excluded from GitHub.
 
-Users can use any similar Road Traffic Accident dataset from Kaggle containing related features.
+- Only the source code, ML pipeline, and Streamlit dashboard are uploaded in this repository.
+- The original dataset is intentionally excluded from GitHub.
+
+Users can use any similar Road Traffic Accident dataset from Kaggle containing related traffic and road-condition features.
 
 ---
 
 # 🔎 Suggested Kaggle Search Keywords
 
-Search in Kaggle using:
+Search on Kaggle using:
 
 ```bash
 Road Traffic Accident Dataset
@@ -49,13 +43,13 @@ Road Traffic Accident Dataset
 or
 
 ```bash
-Traffic Accident Severity Dataset
+Traffic Accident Prediction Dataset
 ```
 
 or
 
 ```bash
-Road Accident Prediction Dataset
+Road Accident Classification Dataset
 ```
 
 ---
@@ -63,7 +57,7 @@ Road Accident Prediction Dataset
 # 📂 Project Structure
 
 ```bash
-RTA_PROJECT/
+SMART_ACCIDENT_RISK_CLASSIFICATION/
 │
 ├── MAIN CODE FINAL.py
 ├── app.py
@@ -87,21 +81,21 @@ RTA_PROJECT/
 
 ---
 
-# 🎯 Objectives
+# 🎯 Project Objectives
 
-- Analyze road traffic accident patterns
-- Predict accident severity using ML algorithms
-- Identify high-risk accident conditions
+- Analyze traffic accident patterns
+- Predict accident occurrence using ML algorithms
+- Identify high-risk traffic conditions
 - Compare multiple machine learning models
-- Visualize accident analytics interactively
-- Store accident data in MySQL database
-- Build an accident risk prediction dashboard
+- Build an interactive accident risk dashboard
+- Store accident data into MySQL database
+- Improve road safety analytics
 
 ---
 
 # 📊 Dataset Features
 
-The project expects a dataset containing the following or similar features:
+The project expects a dataset containing traffic accident-related attributes similar to the following:
 
 | Feature Name | Description |
 |---|---|
@@ -114,19 +108,19 @@ The project expects a dataset containing the following or similar features:
 | Driving_experience | Driving experience level |
 | Type_of_vehicle | Vehicle category/type |
 | Owner_of_vehicle | Vehicle ownership |
-| Service_year_of_vehicle | Vehicle age/service years |
+| Service_year_of_vehicle | Vehicle service age |
 | Defect_of_vehicle | Vehicle defect condition |
 | Area_accident_occured | Accident area/location |
-| Lanes_or_Medians | Lane/median information |
+| Lanes_or_Medians | Lane/median details |
 | Road_allignment | Road alignment type |
 | Types_of_Junction | Junction/intersection type |
 | Road_surface_type | Road surface category |
-| Road_surface_conditions | Road condition |
+| Road_surface_conditions | Road surface condition |
 | Light_conditions | Lighting condition |
 | Weather_conditions | Weather condition |
-| Type_of_collision | Type of collision |
-| Number_of_vehicles_involved | Vehicles involved in accident |
-| Number_of_casualties | Casualties count |
+| Type_of_collision | Collision type |
+| Number_of_vehicles_involved | Number of vehicles involved |
+| Number_of_casualties | Number of casualties |
 | Vehicle_movement | Vehicle movement status |
 | Casualty_class | Casualty classification |
 | Sex_of_casualty | Casualty gender |
@@ -136,7 +130,6 @@ The project expects a dataset containing the following or similar features:
 | Fitness_of_casuality | Fitness condition |
 | Pedestrian_movement | Pedestrian movement |
 | Cause_of_accident | Main cause of accident |
-| Accident_severity | Target variable |
 
 ---
 
@@ -145,20 +138,45 @@ The project expects a dataset containing the following or similar features:
 The machine learning model predicts:
 
 ```text
-Accident_severity
+accident_occurred
 ```
 
-Possible classes may include:
+The target variable represents whether an accident occurred or not under specific traffic, road, environmental, and driver-related conditions.
 
-- Slight Injury
-- Serious Injury
-- Fatal Injury
+---
+
+# 📌 Possible Classes
+
+| Value | Meaning |
+|---|---|
+| 0 | No Accident |
+| 1 | Accident Occurred |
+
+---
+
+# ⚠️ Important Dataset Note
+
+The original client dataset contained a custom engineered target variable named:
+
+```text
+accident_occurred
+```
+
+Since the dataset is not publicly shared, users downloading alternative datasets from Kaggle may need to manually create the target column.
+
+Example:
+
+```python
+df['accident_occurred'] = np.where(df['Accident_severity'] == 'Slight Injury', 0, 1)
+```
+
+You may customize the target logic based on your project requirements.
 
 ---
 
 # 🧠 Machine Learning Models Used
 
-The project compares multiple classification models:
+The project compares multiple classification algorithms:
 
 - Logistic Regression
 - Decision Tree Classifier
@@ -197,7 +215,7 @@ The project performs:
 - Correlation Heatmaps
 - Pairplots
 - Outlier Detection
-- Accident Pattern Visualization
+- Accident Risk Visualization
 
 ---
 
@@ -205,23 +223,23 @@ The project performs:
 
 The system identifies:
 
-- Accident-prone areas
+- Accident-prone locations
 - Peak accident timings
-- High-risk road conditions
 - Weather-related accident risks
-- Severity vs vehicle involvement relationships
+- Road-condition risk analysis
+- Vehicle involvement patterns
 
-These insights support:
-- Traffic management
-- Emergency response planning
-- Smart city analytics
-- Road safety improvement
+These insights help:
+- Traffic authorities
+- Smart city planners
+- Emergency response teams
+- Insurance companies
 
 ---
 
 # 🗄️ SQL Integration
 
-The dataset is connected to a MySQL database using SQLAlchemy.
+The dataset is connected to MySQL using SQLAlchemy.
 
 ### Database Table
 
@@ -233,10 +251,10 @@ accident_data
 
 # 🖥️ Streamlit Dashboard Features
 
-The dashboard provides:
+The interactive dashboard provides:
 
 ✅ CSV/XLSX Upload  
-✅ Accident Severity Prediction  
+✅ Accident Prediction  
 ✅ Risk Classification  
 ✅ Download Prediction Results  
 ✅ Feature Importance Visualization  
@@ -253,13 +271,13 @@ The dashboard provides:
 ## 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/your-username/RTA-Accident-Prediction.git
-cd RTA-Accident-Prediction
+git clone https://github.com/your-username/Smart-Accident-Risk-Classification.git
+cd Smart-Accident-Risk-Classification
 ```
 
 ---
 
-## 2️⃣ Install Dependencies
+## 2️⃣ Install Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -302,7 +320,7 @@ The system generates:
 - Trained ML Pipeline (.pkl)
 - Feature Schema (.json)
 - Model Metrics (.csv)
-- Model Comparison Reports
+- Comparison Reports
 - Heatmaps
 - F1 Score Charts
 
@@ -349,7 +367,7 @@ Streamlit Deployment
 
 # 📷 Dashboard Preview
 
-Add your dashboard screenshots here:
+Add your dashboard screenshots inside:
 
 ```bash
 images/dashboard_preview.png
@@ -362,7 +380,7 @@ images/dashboard_preview.png
 ## K SAI PRAGNA
 
 ### Project:
-Smart Road Traffic Accident Severity Prediction System
+Smart Accident Risk Classification Using Traffic and Road Condition Data
 
 ---
 
